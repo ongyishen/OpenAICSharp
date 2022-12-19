@@ -29,25 +29,25 @@ alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box
 
 ### Image Generation
 
-<img src="https://github.com/ongyishen/OpenAICSharp/img/TextToImage.gif?raw=true" />
+<img src="https://github.com/ongyishen/OpenAICSharp/blob/main/img/TextToImage.gif?raw=true" />
 
 ### Anwser Question
 
-<img src="https://github.com/ongyishen/OpenAICSharp/img/AnswerQuestion.gif?raw=true" />
+<img src="https://github.com/ongyishen/OpenAICSharp/blob/main/img/AnswerQuestion.gif?raw=true" />
 
 ### Awesome ChatGPT Prompts
 
-<img src="https://github.com/ongyishen/OpenAICSharp/img/AwesomeAnswerQuestion.gif?raw=true" />
+<img src="https://github.com/ongyishen/OpenAICSharp/blob/main/img/AwesomeAnswerQuestion.gif?raw=true" />
 
 ## Pre-requisite
 
 Please register a OpenAI Account
 
 Get the OpenAI Api Key (Please refer the screenshot)
-<img src="https://github.com/ongyishen/OpenAICSharp/img/OpenAIApiKey.png?raw=true" />
+<img src="https://github.com/ongyishen/OpenAICSharp/blob/main/img/OpenAIApiKey.png?raw=true" />
 
 Please update the appsetting.json at the C# Project with your Api Key
-<img src="https://github.com/ongyishen/OpenAICSharp/img/AppSetting.png?raw=true" />
+<img src="https://github.com/ongyishen/OpenAICSharp/blob/main/img/AppSetting.png?raw=true" />
 
 <img src="https://img.shields.io/badge/NugetPackage-blueviolet?logo=visualstudio" alt="NugetPackage">
 
