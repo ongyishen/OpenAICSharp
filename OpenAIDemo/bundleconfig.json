@@ -1,0 +1,34 @@
+[
+	{
+		"outputFileName": "wwwroot/lib/mainjs.min.js",
+		"inputFiles": [
+			"wwwroot/lib/layer/layer.js",
+			"wwwroot/lib/jquery.blockUI/jquery.blockUI.js",
+			"wwwroot/js/main.js",
+			"wwwroot/js/main-plugin.js"
+		],
+		"minify": {
+			"enabled": false,
+			"renameLocals": true
+		}
+	},
+	{
+		"outputFileName": "wwwroot/lib/ngjs.min.js",
+		"inputFiles": [
+			"wwwroot/lib/angular.js/angular.js",
+			"wwwroot/lib/ngStorage/ngStorage.js",
+			//"wwwroot/lib/modules/angular.ng-modules.js",
+			"wwwroot/lib/angular-sanitize/angular-sanitize.js",
+			"wwwroot/lib/angular-messages/angular-messages.js",
+			"wwwroot/lib/angular-touch/angular-touch.js",
+			"wwwroot/lib/angular-animate/angular-animate.js",
+			"wwwroot/lib/angular-aria/angular-aria.js",
+			"wwwroot/lib/angular-validator/angular-validator.js",
+			"wwwroot/js/ngService.js"
+		],
+		"minify": {
+			"enabled": false,
+			"renameLocals": true
+		}
+	}
+]

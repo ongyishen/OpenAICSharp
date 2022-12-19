@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "angular.js@1.8.3",
+      "destination": "wwwroot/lib/angular.js/"
+    },
+    {
+      "library": "angular-sanitize@1.8.3",
+      "destination": "wwwroot/lib/angular-sanitize/"
+    },
+    {
+      "library": "angular-aria@1.8.3",
+      "destination": "wwwroot/lib/angular-aria/"
+    },
+    {
+      "library": "angular-animate@1.8.3",
+      "destination": "wwwroot/lib/angular-animate/"
+    },
+    {
+      "library": "angular-messages@1.8.3",
+      "destination": "wwwroot/lib/angular-messages/"
+    },
+    {
+      "library": "angular-validator@1.2.10",
+      "destination": "wwwroot/lib/angular-validator/"
+    },
+    {
+      "library": "ngStorage@0.3.11",
+      "destination": "wwwroot/lib/ngStorage/"
+    },
+    {
+      "library": "jquery-loading-overlay@2.1.7",
+      "destination": "wwwroot/lib/jquery-loading-overlay/"
+    },
+    {
+      "library": "angular-touch@1.8.3",
+      "destination": "wwwroot/lib/angular-touch/"
+    },
+    {
+      "library": "layer@3.5.1",
+      "destination": "wwwroot/lib/layer/"
+    },
+    {
+      "library": "jquery.blockUI@2.70",
+      "destination": "wwwroot/lib/jquery.blockUI/"
+    },
+    {
+      "library": "font-awesome@6.2.1",
+      "destination": "wwwroot/lib/font-awesome/"
+    }
+  ]
+}

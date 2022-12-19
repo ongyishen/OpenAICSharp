@@ -1,0 +1,139 @@
+﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment
+
+@{
+	ViewData["Title"] = "Home Page";
+	string baseURL = "~/Home/";
+	string ngCtrlName = "mainController";
+}
+
+<div ng-app="myApp" ng-controller="myCtrl" id="@ngCtrlName">
+	<h1 class="display-4">TEXT TO IMAGE</h1>
+
+	<div class="row" id="searchDiv">
+		<div class="col-6">
+
+			<!--Text area for the prompt text-->
+				<label for="txt">Image Description</label>
+				<textarea style="height: 120px" class="form-control" id="txt" col="txt" placeholder="Enter your text here"></textarea>
+				<br />
+
+
+
+
+		</div>
+
+		<div class="col-6">
+
+			<div class="row">
+				<div class="col-12">
+								<label for="quantity">Number of Images</label>
+				<!-- Input for desired number of images -->
+				<input type="number" value="1" placeholder="Enter quantity" id="quantity" col="quantity" class="form-control" />
+
+				</div>
+				<div class="col-12 mt-1">
+					<label for="sel">Image Size</label>
+				<!--Combobox for the desired image size-->
+				<select id="sel" col="sel" class="form-select">
+					<option selected>256x256</option>
+					<option>512x512</option>
+					<option>1024x1024</option>
+				</select>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-12 mt-1">
+			<!--Generate button-->
+			<a id="btn" class="btn btn-success" ng-click="generateImg()">
+				Generate
+			</a>
+		</div>
+	</div>
+
+
+
+
+
+<hr />
+<div class="row">
+	<div class="col-lg-3 col-md-12 mb-3 mb-lg-0" ng-repeat="item in dataList">
+		<img  class="w-100 shadow-1-strong rounded mb-4"  src="{{item.url}}" ng-click="openNewTab(item)" />
+	</div>
+</div>
+
+</div>
+
+
+
+@section footer{
+	@BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/mainjs.min.js"))
+	@BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/ngjs.min.js"))
+
+						 <script type="text/javascript">
+							  $(function () {
+
+							  });
+
+
+							  app.controller("myCtrl", [
+								"$scope",
+								"$serviceBase",
+								"$timeout",
+								"$filter",
+								"$window",
+
+								function ($scope, $serviceBase, $timeout, $filter, $window) {
+
+									$scope.dataList=[];
+
+									$scope.openNewTab=function(item){
+
+											ys.openLink(item.url);
+									};
+
+									$scope.generateImg=function(){
+
+										try
+										{
+											$scope.dataList=[];
+												var postData= $("#searchDiv").getWebControls();
+												console.log(postData);
+
+												ys.ajax({
+											url: '@Url.Content(baseURL + "GenerateImage")',
+											type: "post",
+											data: postData,
+											success: function (obj) {
+												console.log(obj);
+												if (obj.Tag == 1) {
+													var temp = obj.Data;
+													$timeout(function () {
+
+														ys.msgSuccess("Done");	
+														$scope.dataList = angular.copy(temp.data);
+														console.log($scope.dataList);
+
+
+
+													});
+												}
+												else {
+													ys.alertError(obj.Message);
+
+
+												}
+											}
+										});
+										}
+										catch(e)
+										{
+											alert(e);
+										}
+
+									};
+
+								}]);
+						</script>
+}

@@ -1,0 +1,126 @@
+﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment
+
+@{
+	ViewData["Title"] = "Home Page";
+	string baseURL = "~/Home/";
+	string ngCtrlName = "mainController";
+}
+
+
+<div ng-app="myApp" ng-controller="myCtrl" id="@ngCtrlName">
+
+		<h1 class="display-4"><i class="fas fa-question me-2"></i>Answer questions based on existing knowledge</h1>
+		<div class="row" id="searchDiv">
+			<div class="col-6">
+
+				<label for="txt">Question</label>
+				<Input type="text" class="form-control" id="prompt" col="prompt" placeholder="Enter your question here" />
+
+
+
+
+		</div>
+		<div class="col-12 mt-1">
+			<!--Generate button-->
+			<a id="btn" class="btn btn-success" ng-click="submit()">
+				Submit
+			</a>
+		</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-12" ng-repeat="item in dataList">
+
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="my-2 w-100"><i class="fas fa-question me-2"></i>{{item.qtext}}</h5>
+				  </div>
+				  <p class="mb-1">
+					{{item.atext}}
+				  </p>
+
+			</div>
+		</div>
+</div>
+
+@section footer{
+	@BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/mainjs.min.js"))
+	@BundlerHelper.Render(HostingEnvironment.ContentRootPath, Url.Content("~/lib/ngjs.min.js"))
+
+						 <script type="text/javascript">
+							  $(function () {
+								  $("#searchDiv").keyup(function (e) {
+										if (e.which === 13) {
+											$("#btn").click();
+										}
+									});
+
+
+								$("#prompt").focus();
+							  });
+
+
+							  app.controller("myCtrl", [
+								"$scope",
+								"$serviceBase",
+								"$timeout",
+								"$filter",
+								"$window",
+
+								function ($scope, $serviceBase, $timeout, $filter, $window) {
+
+									$scope.dataList=[];
+
+
+
+									$scope.submit=function(){
+
+										try
+										{
+
+												var postData= $("#searchDiv").getWebControls();
+												console.log(postData);
+
+												ys.ajax({
+											url: '@Url.Content(baseURL + "SubmitQuestion")',
+											type: "post",
+											data: postData,
+											success: function (obj) {
+												console.log(obj);
+												if (obj.Tag == 1) {
+													var temp = obj.Data;
+													$timeout(function () {
+
+														//ys.msgSuccess("Done");	
+														var data={
+
+														qtext:postData.prompt,
+														atext:temp.choices[0].text
+
+														};
+
+														$scope.dataList.push(data);
+
+
+														$("#searchDiv").setWebControls({})
+														$("#prompt").focus();
+
+													});
+												}
+												else {
+													ys.alertError(obj.Message);
+
+
+												}
+											}
+										});
+										}
+										catch(e)
+										{
+											alert(e);
+										}
+
+									};
+
+								}]);
+						</script>
+}
